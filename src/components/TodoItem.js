@@ -13,12 +13,19 @@ class TodoItem extends Component {
       textDecoration: this.props.todo.completed ? "line-through" : "none",
     };
   };
+
   render() {
-    let todo = this.props.todo;
+    const { id, title, completed } = this.props.todo;
     return (
       <div style={this.getStyle()}>
         <p>
-          {todo.id}-{todo.title}
+          <input
+            type="checkbox"
+            checked={completed}
+            onChange={this.props.markComplete.bind(this, id)}
+          />{" "}
+          {"   "}
+          {id}-{title}
         </p>
       </div>
     );
@@ -27,6 +34,7 @@ class TodoItem extends Component {
 
 TodoItem.protoTypes = {
   todo: PropTypes.object.isRequired,
+  markComplete: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

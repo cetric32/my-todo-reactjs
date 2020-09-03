@@ -24,11 +24,24 @@ class App extends Component {
       },
     ],
   };
+
+  markComplete = (id) => {
+    console.log(id);
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      }),
+    });
+  };
+
   render() {
     return (
       <div>
         <header className="App-header">
-          <Todos todos={this.state.todos} />
+          <Todos todos={this.state.todos} markComplete={this.markComplete} />
         </header>
       </div>
     );
