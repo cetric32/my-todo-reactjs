@@ -14,7 +14,7 @@ class App extends Component {
         id: 2,
         title: "test todo 2",
         body: "This my second react todo",
-        completed: false,
+        completed: true,
       },
       {
         id: 3,
